@@ -10,6 +10,10 @@
     return provider.user().then(function (current) { return !!current; }).catch(function () { return false; });
   }
   function setMode() {
+    var url = new URL(location.href);
+    if (registering) url.searchParams.set("mode", "register");
+    else url.searchParams.delete("mode");
+    history.replaceState(null, "", url.pathname + url.search + url.hash);
     $("#login-tab").setAttribute("aria-selected", String(!registering));
     $("#register-tab").setAttribute("aria-selected", String(registering));
     $("#auth-heading").textContent = registering ? "Create your account." : "Welcome back.";
@@ -30,6 +34,9 @@
   async function showDashboard() {
     var current = await provider.user();
     if (!current) { showAuth(); return; }
+    var url = new URL(location.href);
+    url.searchParams.delete("mode");
+    history.replaceState(null, "", url.pathname + url.search + url.hash);
     var username = (current.user_metadata || {}).username || "Player";
     $("#greeting").textContent = username;
     $("#current-username").value = username;

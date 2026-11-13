@@ -1,6 +1,7 @@
 .account-page { min-height: 100dvh; display: flex; flex-direction: column; }
 [hidden] { display: none !important; }
 .account-header { display: flex; justify-content: space-between; align-items: center; min-height: 88px; gap: 20px; }
+.account-header-back { justify-content: flex-end; }
 .account-shell { width: min(100% - 56px, 1104px); margin: 56px auto 100px; flex: 1; }
 .account-auth { display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; gap: 80px; }
 .account-intro { position: relative; min-height: 540px; padding: 40px 0; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
