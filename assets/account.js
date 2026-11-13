@@ -80,7 +80,7 @@
     event.preventDefault(); var code = new FormData(event.currentTarget).get("code").toUpperCase().replace(/[^A-Z0-9]/g, "");
     var message = event.currentTarget.querySelector(".settings-message");
     if (code.length !== 8) { message.textContent = "Enter the eight-character code from your launcher."; message.classList.add("is-error"); message.hidden = false; return; }
-    location.href = "/device?code=" + encodeURIComponent(code.slice(0, 4) + "-" + code.slice(4));
+    location.href = "/auth?code=" + encodeURIComponent(code.slice(0, 4) + "-" + code.slice(4));
   };
   setMode();
   restore().then(function (ok) { if (ok) return showDashboard(); showAuth(); }).catch(function (error) { showAuth(); success($("#auth-message"), error.message); });

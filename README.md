@@ -12,16 +12,15 @@ no build command, and **Output: .**. Clean URLs are configured in `vercel.json`.
 
 ### Custom authentication domain
 
-Add both `projectpickle.xyz` and `auth.projectpickle.xyz` to the same Vercel
-project under Settings > Domains. Apply the exact DNS records Vercel provides.
-The homepage sends login and registration to the auth subdomain. The launcher
-opens `https://auth.projectpickle.xyz/device?code=...`; an existing browser
+Add `projectpickle.xyz` to Vercel under Settings > Domains and apply the DNS records
+Vercel provides. No auth subdomain is needed. The launcher
+opens `https://projectpickle.xyz/auth?code=...`; an existing browser
 session on that origin goes straight to approval. Approval is always explicit.
 
-In Supabase set Site URL to `https://auth.projectpickle.xyz` and allow
-`https://auth.projectpickle.xyz/account` as a Redirect URL. Set backend
-`WEB_AUTH_URL=https://auth.projectpickle.xyz`, keep that origin in `CORS_ORIGIN`,
-and set the launcher's Website URL to `https://auth.projectpickle.xyz` if it
+In Supabase set Site URL to `https://projectpickle.xyz` and allow
+`https://projectpickle.xyz/account` as a Redirect URL. Set backend
+`WEB_AUTH_URL=https://projectpickle.xyz`, keep that origin in `CORS_ORIGIN`,
+and set the launcher's Website URL to `https://projectpickle.xyz` if it
 already has older settings saved. Cookies/local storage are origin-specific:
 sessions previously created on another hostname require one new sign-in here.
 
@@ -61,7 +60,7 @@ Supabase stores account credentials. The VPS retains game statistics and launche
 - `/` — homepage with bots information.
 - `/account` — email/username login, registration and account dashboard.
 - `/account?mode=register` — registration.
-- `/device` — review and approve a launcher code.
+- `/auth` — review and approve a launcher code (`/device` is a legacy URL).
 - `/support` — email, Discord username and creator website.
 
 Email changes require the current password and Supabase email confirmation.
@@ -71,7 +70,7 @@ Username changes require no password. Supabase SQL enforces unique usernames.
 ## Launcher
 
 The Electron launcher lives in the main local Project Pickle monorepo, not this
-website-only repository. It opens `/device?code=...` in the browser and polls the
+website-only repository. It opens `/auth?code=...` in the browser and polls the
 backend for a one-time session. It never handles your Supabase password.
 Set its website URL in Settings to your Vercel origin after deployment.
 

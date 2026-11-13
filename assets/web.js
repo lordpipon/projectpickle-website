@@ -423,7 +423,7 @@
 
   function initSite() {
     var authOrigin = ((window.PICKLE_CONFIG || {}).authUrl || "").replace(/\/+$/, "");
-    if (authOrigin) document.querySelectorAll('a[href^="/account"], a[href^="/device"]').forEach(function (link) {
+    if (authOrigin) document.querySelectorAll('a[href^="/account"], a[href^="/device"], a[href^="/auth"]').forEach(function (link) {
       link.href = authOrigin + link.getAttribute("href");
     });
     var year = $("#year");
