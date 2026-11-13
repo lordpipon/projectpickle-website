@@ -9,6 +9,8 @@
  */
 window.PICKLE_CONFIG = {
   apiUrl: "https://34-32-63-8.sslip.io",
+  authUrl: "https://auth.projectpickle.xyz",
+  siteUrl: "https://projectpickle.xyz",
   supabase: {
     url: "",
     anonKey: "",

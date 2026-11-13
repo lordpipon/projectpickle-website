@@ -1,6 +1,8 @@
 (function () {
   "use strict";
   var provider = window.PickleAuth;
+  var homeUrl = (window.PICKLE_CONFIG || {}).siteUrl;
+  if (homeUrl) document.querySelectorAll('.account-header a[href="/"]').forEach(function (link) { link.href = homeUrl; });
   var registering = new URLSearchParams(location.search).get("mode") === "register";
   var $ = function (selector) { return document.querySelector(selector); };
   function clear() { provider.clear(); }

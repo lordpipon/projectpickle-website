@@ -10,6 +10,21 @@ no build command, and **Output: .**. Clean URLs are configured in `vercel.json`.
 
 ## Connect Supabase (required for sign-in)
 
+### Custom authentication domain
+
+Add both `projectpickle.xyz` and `auth.projectpickle.xyz` to the same Vercel
+project under Settings > Domains. Apply the exact DNS records Vercel provides.
+The homepage sends login and registration to the auth subdomain. The launcher
+opens `https://auth.projectpickle.xyz/device?code=...`; an existing browser
+session on that origin goes straight to approval. Approval is always explicit.
+
+In Supabase set Site URL to `https://auth.projectpickle.xyz` and allow
+`https://auth.projectpickle.xyz/account` as a Redirect URL. Set backend
+`WEB_AUTH_URL=https://auth.projectpickle.xyz`, keep that origin in `CORS_ORIGIN`,
+and set the launcher's Website URL to `https://auth.projectpickle.xyz` if it
+already has older settings saved. Cookies/local storage are origin-specific:
+sessions previously created on another hostname require one new sign-in here.
+
 1. Create a Supabase project and enable Email/Password authentication.
 2. Run `supabase/setup.sql` in the Supabase SQL Editor. This creates a **private**
    username directory and keeps it synced with Auth. Browser clients cannot read emails.

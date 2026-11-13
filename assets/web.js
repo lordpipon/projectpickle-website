@@ -422,6 +422,10 @@
   }
 
   function initSite() {
+    var authOrigin = ((window.PICKLE_CONFIG || {}).authUrl || "").replace(/\/+$/, "");
+    if (authOrigin) document.querySelectorAll('a[href^="/account"], a[href^="/device"]').forEach(function (link) {
+      link.href = authOrigin + link.getAttribute("href");
+    });
     var year = $("#year");
     if (year) year.textContent = String(new Date().getFullYear());
 
@@ -625,6 +629,8 @@
   }
 
   async function initDevice() {
+    var home = document.querySelector(".site-head .brand");
+    if (home && (window.PICKLE_CONFIG || {}).siteUrl) home.href = window.PICKLE_CONFIG.siteUrl;
     var params = new URLSearchParams(window.location.search);
     var incoming = params.get("code");
     if (incoming) acceptCode(incoming, false);
