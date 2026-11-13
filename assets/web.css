@@ -360,6 +360,10 @@ input {
   align-items: start;
 }
 
+.hero-grid:has(> .hero-copy:only-child) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .eyebrow {
   display: inline-flex;
   align-items: center;
