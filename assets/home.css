@@ -19,6 +19,7 @@
 .intro-bottom p { color: var(--text-2); font-size: clamp(16px,1.6vw,20px); line-height: 1.6; letter-spacing: -.02em; }
 .intro-bottom .btn { min-height: 50px; padding-inline: 22px; border-radius: 9px; background: #f0eaff; border-color: #f0eaff; color: #251536; box-shadow: 0 0 0 4px rgba(201,175,255,.09); }
 .intro-bottom .btn span { margin-left: 24px; }
+.intro-bottom .btn-discord { background: rgba(31,23,45,.7); color: #c7bad9; border-color: #493557; box-shadow: none; opacity: .75; }
 .launcher-preview { position: relative; margin-bottom: 66px; padding: 7px; border: 1px solid #614582; border-radius: 16px; background: #21172d; box-shadow: 0 0 90px rgba(105,56,174,.2); }
 .launcher-preview img { display: block; width: 100%; height: auto; border-radius: 10px; }
 .build-edition { border-block: 1px solid var(--line); display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 32px; align-items: center; padding-block: 32px; }
