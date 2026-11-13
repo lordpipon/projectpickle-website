@@ -2,6 +2,8 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
+  "buildCommand": "node scripts/build-config.mjs",
+  "outputDirectory": ".",
   "rewrites": [
     { "source": "/auth", "destination": "/device.html" }
   ],

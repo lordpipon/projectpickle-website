@@ -7,23 +7,23 @@
  * ------------------------------------------------------------------ */
 
 :root {
-  --bg: #0a0c0a;
-  --bg-2: #0c0f0c;
-  --panel: #0f120f;
-  --panel-2: #131713;
+  --bg: #0d0a14;
+  --bg-2: #15111e;
+  --panel: #1b1525;
+  --panel-2: #251d32;
 
   --line: rgba(233, 236, 229, 0.08);
   --line-2: rgba(233, 236, 229, 0.14);
 
-  --text: #e9ece5;
-  --text-2: #a3aa9c;
-  --text-3: #6f766b;
+  --text: #f3effb;
+  --text-2: #bcb3cc;
+  --text-3: #9f94b0;
 
-  --accent: #b8e94f;
-  --accent-2: #d4f78c;
-  --accent-ink: #0b1206;
-  --accent-dim: #7f9f3a;
-  --accent-soft: rgba(184, 233, 79, 0.1);
+  --accent: #bda0ff;
+  --accent-2: #d7c2ff;
+  --accent-ink: #20142f;
+  --accent-dim: #9b7cc8;
+  --accent-soft: rgba(189, 160, 255, 0.1);
 
   --danger: #ff7b72;
 

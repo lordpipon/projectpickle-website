@@ -47,7 +47,7 @@
       if (identity.includes("@")) data = await auth("/token?grant_type=password", "POST", { email: identity, password: password });
       else {
         configured();
-        var response = await fetch(config.apiUrl.replace(/\/+$/, "") + "/api/auth/supabase/login", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ username: identity, password: password }) });
+        var response = await fetch(config.usernameLoginUrl || (config.apiUrl.replace(/\/+$/, "") + "/api/auth/supabase/login"), { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ username: identity, password: password }) });
         data = await response.json();
         if (!response.ok) throw new Error((data.error || {}).message || "Username or password is incorrect.");
       }

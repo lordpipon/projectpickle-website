@@ -12,7 +12,8 @@
   function setMode() {
     $("#login-tab").setAttribute("aria-selected", String(!registering));
     $("#register-tab").setAttribute("aria-selected", String(registering));
-    $("#auth-heading").textContent = registering ? "Make yourself at home." : "Welcome back.";
+    $("#auth-heading").textContent = registering ? "Create your account." : "Welcome back.";
+    $("#auth-description").textContent = registering ? "Join Project Pickle." : "Sign in to your Project Pickle account.";
     $("#identity-label").textContent = registering ? "Email" : "Email or username";
     $("#identity").type = registering ? "email" : "text";
     $("#identity").autocomplete = registering ? "email" : "username";
