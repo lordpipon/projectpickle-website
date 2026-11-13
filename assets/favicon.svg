@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <linearGradient id="pickle-body" x1="14" y1="6" x2="34" y2="42" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#d4ff7a" />
+      <stop offset="0.55" stop-color="#a8f033" />
+      <stop offset="1" stop-color="#6fb812" />
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="48" height="48" rx="14" fill="#060907" />
+  <rect x="0.75" y="0.75" width="46.5" height="46.5" rx="13.25" fill="rgba(182,255,59,0.09)" stroke="rgba(182,255,59,0.35)" stroke-width="1.5" />
+  <rect x="19" y="9" width="10" height="7" rx="3" fill="#7fbf1d" />
+  <path d="M24 12c7.2 0 12 5.4 12 12.6C36 33 30.6 39 24 39S12 33 12 24.6C12 17.4 16.8 12 24 12Z" fill="url(#pickle-body)" />
+  <circle cx="19.5" cy="22" r="1.7" fill="#5d9a0b" opacity="0.55" />
+  <circle cx="28" cy="27" r="1.4" fill="#5d9a0b" opacity="0.5" />
+  <circle cx="22" cy="31" r="1.1" fill="#5d9a0b" opacity="0.45" />
+  <circle cx="30" cy="18.5" r="1" fill="#5d9a0b" opacity="0.4" />
+  <path d="M17.5 25c1.6-4.4 4.6-7 8.4-7.8" stroke="#f2ffd6" stroke-width="2.2" stroke-linecap="round" opacity="0.5" />
+</svg>

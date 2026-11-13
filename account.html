@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#0a0c0a" />
+  <title>Your account · Project Pickle</title>
+  <link rel="icon" href="/assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/web.css" />
+  <link rel="stylesheet" href="/assets/account.css" />
+  <script src="/assets/config.js" defer></script>
+  <script src="/assets/supabase.js" defer></script>
+  <script src="/assets/account.js" defer></script>
+</head>
+<body class="account-page">
+  <header class="account-header shell">
+    <a class="brand" href="/"><img class="brand-mark" src="/assets/logo.png" width="32" height="32" alt="" /><span class="brand-word">Project Pickle</span></a>
+    <a class="text-link" href="/">Back home</a>
+  </header>
+  <main class="account-shell">
+    <section id="auth-area" class="account-auth" hidden>
+      <div class="account-intro">
+        <img src="/assets/logo.png" class="account-art" width="360" height="400" alt="Project Pickle character" />
+        <h1>Your next drop<br />starts here.</h1>
+        <p>One account. Your launcher, your progress, your place on the island.</p>
+      </div>
+      <div class="account-auth-form">
+        <h2 id="auth-heading">Welcome back.</h2>
+        <p class="muted" id="auth-description">Sign in to manage your account or connect your launcher.</p>
+        <div class="tabs" role="tablist" aria-label="Account access">
+          <button class="tab" id="login-tab" type="button" role="tab" aria-selected="true">Sign in</button>
+          <button class="tab" id="register-tab" type="button" role="tab" aria-selected="false">Create account</button>
+        </div>
+        <form id="account-auth-form" class="stack">
+          <label class="field"><span id="identity-label">Email or username</span><input id="identity" autocomplete="username" required maxlength="254" /></label>
+          <label class="field" id="username-field" hidden><span>Username</span><input id="username" autocomplete="nickname" minlength="3" maxlength="20" pattern="[A-Za-z0-9_]+" /><small>3–20 letters, numbers or underscores.</small></label>
+          <label class="field"><span>Password</span><input id="auth-password" type="password" autocomplete="current-password" required maxlength="128" /></label>
+          <label class="field" id="confirm-field" hidden><span>Confirm password</span><input id="auth-confirm" type="password" autocomplete="new-password" maxlength="128" /></label>
+          <p class="form-error" id="auth-message" role="alert" hidden></p>
+          <button class="btn btn-primary btn-block" id="submit-auth">Sign in</button>
+        </form>
+        <p class="account-note">Your password stays on the website. The launcher connects with a one-time code.</p>
+      </div>
+    </section>
+    <section id="dashboard" hidden>
+      <div class="dashboard-heading"><div><p class="muted">Your account</p><h1>Hey, <span id="greeting"></span>.</h1><p class="muted">Make it yours. Keep it secure.</p></div><button id="logout" class="btn" type="button">Sign out</button></div>
+      <div class="dashboard-layout">
+        <aside class="account-sidebar"><a href="#profile">Profile</a><a href="#security">Security</a><a href="#devices">Link a device</a><span>Europe - Frankfurt</span></aside>
+        <div class="account-settings">
+          <section class="settings-section" id="profile"><h2>Profile</h2><p class="muted">The name other players know you by.</p>
+            <form id="rename-form" class="settings-form"><label class="field"><span>Username</span><input name="displayName" id="current-username" autocomplete="nickname" required minlength="3" maxlength="20" pattern="[A-Za-z0-9_]+" /></label><button class="btn" type="submit">Save username</button><p class="settings-message" role="status" hidden></p></form>
+          </section>
+          <section class="settings-section" id="security"><h2>Email & security</h2><p class="muted">Sensitive changes require your current password.</p>
+            <form id="email-form" class="settings-form"><h3>Email address</h3><label class="field"><span>New email</span><input name="email" id="current-email" type="email" autocomplete="email" required maxlength="254" /></label><label class="field"><span>Current password</span><input name="currentPassword" type="password" autocomplete="current-password" required maxlength="128" /></label><button class="btn" type="submit">Update email</button><p class="settings-message" role="status" hidden></p></form>
+            <form id="password-form" class="settings-form"><h3>Change password</h3><label class="field"><span>Current password</span><input name="currentPassword" type="password" autocomplete="current-password" required maxlength="128" /></label><label class="field"><span>New password</span><input name="newPassword" type="password" autocomplete="new-password" required minlength="8" maxlength="128" /></label><label class="field"><span>Confirm new password</span><input name="confirmPassword" type="password" autocomplete="new-password" required minlength="8" maxlength="128" /></label><p class="muted">At least 8 characters. Changing your password signs out all devices.</p><button class="btn" type="submit">Update password</button><p class="settings-message" role="status" hidden></p></form>
+          </section>
+          <section class="settings-section" id="devices"><h2>Connect your launcher</h2><p class="muted">Start sign-in in the launcher, then enter its code here. Only approve a code shown on your own computer.</p><form id="link-form" class="settings-form"><label class="field"><span>Device code</span><input name="code" class="code-input" placeholder="ABCD-EFGH" autocomplete="one-time-code" required maxlength="12" /></label><button class="btn btn-primary" type="submit">Review device connection</button><p class="settings-message" role="status" hidden></p></form></section>
+        </div>
+      </div>
+    </section>
+    <p id="account-loading" class="muted account-loading" role="status">Loading your account…</p>
+    <noscript>Please enable JavaScript to sign in and manage your account.</noscript>
+  </main>
+  <footer class="account-footer shell"><span>© 2026 Project Pickle. All rights reserved.</span><a href="/support">Need help?</a></footer>
+</body>
+</html>
