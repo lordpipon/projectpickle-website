@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { register, login, account, avatar, backend, identity, HttpError } from '../../../lib/server.js';
+import { launcherEndpoint, desktopHeaders } from '../../../lib/launcher-endpoints.js';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 async function jsonBody(request) {
@@ -9,13 +10,22 @@ async function jsonBody(request) {
   try { return JSON.parse(Buffer.concat(chunks).toString('utf8')); } catch { throw new HttpError(400, 'Invalid request.'); }
 }
 async function handle(request, context) {
+  let cors={};
   try {
-    const origin = request.headers.get('origin');
-    if (origin && origin !== new URL(request.url).origin) throw new HttpError(403, 'Cross-origin request rejected.');
     const path = (await context.params).segments.join('/');
+    const origin = request.headers.get('origin');
+    const desktop=launcherEndpoint(path,request.method);
+    if(origin === 'null' && desktop) cors=desktopHeaders;
+    else if (origin && origin !== new URL(request.url).origin) throw new HttpError(403, 'Cross-origin request rejected.');
     if (path === 'account/avatar' && request.method === 'POST') return NextResponse.json(await avatar(request));
     if (Number(request.headers.get('content-length') || 0) > 8192) throw new HttpError(413, 'Request too large.');
     const body = request.method === 'GET' ? {} : await jsonBody(request);
+    if(desktop) {
+      const token=request.headers.get('authorization')?.replace(/^Bearer\s+/i,'');
+      const query=new URL(request.url).search;
+      const result=await backend('/api/'+path+query,{token,method:request.method,...(request.method!=='GET'?{body}:{})});
+      return NextResponse.json(result,{headers:{'cache-control':'no-store',...cors}});
+    }
     let result;
     if (path === 'auth/register' && request.method === 'POST') result = await register(request, body);
     else if (path === 'auth/login' && request.method === 'POST') result = await login(body);
@@ -39,9 +49,15 @@ async function handle(request, context) {
     return NextResponse.json(result, { headers: { 'cache-control': 'no-store' } });
   } catch (error) {
     if (!(error instanceof HttpError)) console.error('API request failed:', error.message);
-    return NextResponse.json({ error: { message: error instanceof HttpError ? error.message : 'Account service is temporarily unavailable. Please try again.' } }, { status: error instanceof HttpError ? error.status : 503, headers: { 'cache-control': 'no-store' } });
+    return NextResponse.json({ error: { message: error instanceof HttpError ? error.message : 'Account service is temporarily unavailable. Please try again.' } }, { status: error instanceof HttpError ? error.status : 503, headers: { 'cache-control': 'no-store', ...cors } });
   }
 }
 export const GET = handle;
 export const POST = handle;
 export const PATCH = handle;
+export async function OPTIONS(request,context) {
+  const path=(await context.params).segments.join('/');
+  const method=request.headers.get('access-control-request-method') || '';
+  if(request.headers.get('origin')!=='null' || !launcherEndpoint(path,method)) return new NextResponse(null,{status:403});
+  return new NextResponse(null,{status:204,headers:desktopHeaders});
+}

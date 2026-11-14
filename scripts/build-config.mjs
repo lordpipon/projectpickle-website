@@ -12,7 +12,7 @@ if (anonKey.split(".").length === 3) {
 if (url && new URL(url).protocol !== "https:") throw new Error("Supabase URL must use HTTPS.");
 if (!url || !anonKey) console.warn("Supabase public configuration is missing. Set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in Vercel.");
 const config = {
-  apiUrl: first("NEXT_PUBLIC_PICKLE_API_URL", "PICKLE_API_URL") || "https://34-32-63-8.sslip.io",
+  apiUrl: "https://projectpickle.xyz",
   authUrl: "https://projectpickle.xyz",
   siteUrl: "https://projectpickle.xyz",
   supabase: { url, anonKey },
