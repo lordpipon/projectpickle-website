@@ -1,0 +1,45 @@
+.site-root { min-height: 100dvh; display: flex; flex-direction: column; }
+.site-root > main { flex: 1; }
+.header-back-only { justify-content: flex-end; }
+.home-footer nav { display: flex; align-items: center; flex-wrap: wrap; gap: 20px; }
+.home-footer a,.support-kind,.support-value,.account-sidebar a { display: inline-flex; align-items: center; gap: 8px; }
+.intro-bottom .btn-discord { opacity: 1; }
+.password-control { position: relative; }
+.password-control input { padding-right: 48px; }
+.password-control button { position: absolute; top: 4px; right: 4px; height: 36px; width: 36px; padding: 0; display: grid; place-items: center; border: 0; border-radius: 5px; background: transparent; color: var(--text-2); cursor: pointer; }
+.password-control button:hover { color: var(--text); background: var(--panel-2); }
+.field > label { font-size: 13px; color: var(--text-2); }
+.tab[aria-pressed=true] { background: var(--panel-2); color: var(--text); }
+.legal-agreement { display: flex; align-items: start; gap: 10px; font-size: 12px; color: var(--text-2); line-height: 1.7; }
+.legal-agreement input { width: 16px; height: 16px; min-height: 0; margin-top: 4px; accent-color: var(--accent); flex-shrink: 0; }
+.legal-agreement a,.download-legal a { color: var(--accent); }
+.profile-heading { display: flex; align-items: center; gap: 20px; }
+.profile-avatar { width: 64px; height: 64px; object-fit: cover; border-radius: 18px; }
+.btn-danger { color: #ffb3b3; border-color: #743c45; background: #341d29; }
+.btn-danger:hover { background: #48232d !important; }
+.avatar-upload { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 24px; color: var(--text-2); font-size: 13px; }
+.avatar-upload input { padding: 8px; font-size: 12px; width: 100%; max-width: 450px; }
+.avatar-upload small { width: 100%; color: var(--text-3); }
+.account-feedback { padding: 14px 16px; border: 1px solid var(--line-2); border-radius: 8px; margin-bottom: 28px; font-size: 13px; }
+.device-main { display: grid; place-items: start center; padding: 48px 20px 100px; }
+.device-card { width: min(100%,430px); padding: 32px; border: 1px solid var(--line-2); border-radius: 14px; background: var(--panel); display: flex; flex-direction: column; gap: 18px; }
+.device-card h1 { font-size: 28px; font-weight: 560; letter-spacing: -.04em; }
+.device-card .code-display { font-size: 26px; }
+.device-mark { color: var(--accent); }
+.policy-page { max-width: 900px; padding-top: 64px; padding-bottom: 100px; }
+.policy-page h1 { font-size: clamp(40px,6vw,64px); font-weight: 600; letter-spacing: -.055em; margin-top: 16px; }
+.policy-page ol { margin-top: 48px; }
+.policy-page li { display: grid; grid-template-columns: 44px 1fr; gap: 24px; padding: 26px 0; border-top: 1px solid var(--line); }
+.policy-index { font-size: 12px; color: var(--accent); font-variant-numeric: tabular-nums; padding-top: 4px; }
+.policy-page h2 { font-size: 18px; font-weight: 550; letter-spacing: -.02em; }
+.policy-page li p { font-size: 14px; color: var(--text-2); line-height: 1.8; margin-top: 10px; }
+.download-page { padding-top: 80px; padding-bottom: 100px; }
+.download-page > svg { color: var(--accent); margin-bottom: 26px; }
+.download-page h1 { font-size: clamp(48px,7vw,80px); font-weight: 650; line-height: 1.02; letter-spacing: -.06em; }
+.download-page h1 span { color: var(--accent); }
+.download-page .lede { max-width: 46ch; }
+.download-launcher { margin: 30px 0 18px; min-height: 50px; }
+.download-page > .small-text { margin-top: 10px; }
+.download-page > .text-link { margin-top: 30px; }
+.download-legal { margin-top: 40px; font-size: 12px; max-width: 65ch; color: var(--text-3); }
+@media(max-width:600px) { .site-nav nav { gap: 12px; font-size: 12px; } .site-nav nav > a[href='/support'] { display: none; } .profile-heading { gap: 12px; } .profile-avatar { width: 48px; height: 48px; border-radius: 12px; } .policy-page li { grid-template-columns: 28px 1fr; gap: 12px; } .device-card { padding: 26px 22px; } }

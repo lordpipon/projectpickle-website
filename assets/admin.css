@@ -1,0 +1,25 @@
+.admin-shell { flex: 1; padding-top: 40px; padding-bottom: 80px; }
+.admin-status { margin-top: 24px; color: var(--text-2); }
+.admin-status.is-error { color: var(--danger); }
+.admin-notice { max-width: 85ch; font-size: 13px; color: var(--text-3); line-height: 1.8; margin-top: 28px; }
+.admin-search { display: flex; align-items: end; gap: 14px; margin: 32px 0 24px; }
+.admin-search .field { width: min(440px,100%); }
+.admin-table-wrap { overflow-x: auto; }
+.admin-shell table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
+.admin-shell th { font-weight: 500; color: var(--text-3); }
+.admin-shell th,.admin-shell td { padding: 16px 12px; border-bottom: 1px solid var(--line); }
+.admin-shell td:first-child { font-weight: 500; overflow-wrap: anywhere; }
+.player-id { display: block; color: var(--text-3); font-size: 10px; margin-top: 5px; font-weight: 400; }
+.ban-status { color: var(--danger); }
+.admin-limit { font-size: 11px; margin-top: 14px; }
+.admin-audit { margin-top: 48px; }
+.admin-audit h2 { font-size: 18px; font-weight: 500; margin-bottom: 20px; }
+.admin-audit li { display: flex; gap: 16px; justify-content: space-between; border-bottom: 1px solid var(--line); padding: 14px 0; font-size: 12px; }
+.admin-audit li span { max-width: 76ch; overflow-wrap: anywhere; }
+.admin-audit time { color: var(--text-3); white-space: nowrap; }
+.admin-dialog { width: min(460px,calc(100vw - 32px)); padding: 28px; background: var(--panel); color: var(--text); border: 1px solid var(--line-2); border-radius: 12px; }
+.admin-dialog::backdrop { background: rgba(0,0,0,.72); }
+.admin-dialog h2 { font-size: 22px; margin-bottom: 10px; }
+.admin-dialog .field { margin-top: 24px; }
+.admin-dialog textarea { width: 100%; resize: vertical; background: var(--bg); color: var(--text); border: 1px solid var(--line-2); border-radius: 6px; font: inherit; font-size: 14px; padding: 12px; }
+.admin-dialog-actions { display: flex; gap: 10px; margin-top: 24px; }

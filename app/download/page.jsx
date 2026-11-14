@@ -1,0 +1,9 @@
+import Link from 'next/link';
+import { Download, Monitor, ArrowRight } from 'lucide-react';
+import { Header, Footer } from '../../components/Chrome.jsx';
+export const metadata = { title: 'Download launcher' };
+export default function Page() {
+  let url = process.env.NEXT_PUBLIC_LAUNCHER_DOWNLOAD_URL || '';
+  try { if (new URL(url).origin !== 'https://jhtqb2r1gpzaflzm.public.blob.vercel-storage.com' || !/\.(exe|msi)$/i.test(new URL(url).pathname)) url = ''; } catch { url = ''; }
+  return <div className="site-root"><Header /><main className="download-page wrap"><Monitor size={30} /><p className="intro-season">Project Pickle for Windows</p><h1>Your next stop.<br /><span>Underground.</span></h1><p className="lede">Add your builds, connect your account and keep your library together.</p>{url ? <a className="btn btn-primary download-launcher" href={url}><Download size={18} /> Download for Windows</a> : <><button className="btn btn-primary download-launcher" disabled><Download size={18} /> Installer not uploaded yet</button><p className="muted small-text">The Tauri Windows installer will appear here once it has been built and uploaded.</p></>}<p className="muted small-text">Windows 10 or 11 · WebView2 required · Game files downloaded separately</p><Link className="text-link" href="/account">Already have the launcher? Connect your account <ArrowRight size={16} /></Link><div className="download-legal">By installing and using Project Pickle, you agree to the <Link href="/terms">Terms</Link> and <Link href="/rules">Rules</Link>. Read the <Link href="/privacy">Privacy Policy</Link>.</div></main><Footer /></div>;
+}

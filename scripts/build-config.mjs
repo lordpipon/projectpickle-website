@@ -1,4 +1,4 @@
-import { writeFileSync } from "node:fs";
+import { writeFileSync, mkdirSync, readdirSync, copyFileSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
 const first = (...names) => names.map((name) => process.env[name]?.trim()).find(Boolean) || "";
@@ -18,6 +18,13 @@ const config = {
   supabase: { url, anonKey },
   usernameLoginUrl: "/api/supabase-login",
 };
-writeFileSync(fileURLToPath(new URL("../assets/config.js", import.meta.url)), "// Generated at build time. Public settings only.\nwindow.PICKLE_CONFIG = " + JSON.stringify(config, null, 2) + ";\n");
-writeFileSync(fileURLToPath(new URL("../assets/config.json", import.meta.url)), JSON.stringify({ supabase: { url, anonKey } }, null, 2));
+const output = fileURLToPath(new URL('../public/assets/', import.meta.url));
+mkdirSync(output, { recursive: true });
+for (const name of readdirSync(fileURLToPath(new URL('../assets/', import.meta.url)))) {
+  if (/\.(png|ico|svg|woff2)$/i.test(name) || name === 'inter-license.txt') copyFileSync(fileURLToPath(new URL('../assets/' + name, import.meta.url)), output + '/' + name);
+}
+const icon = new URL('../favicon.ico', import.meta.url);
+if (existsSync(icon)) copyFileSync(icon, fileURLToPath(new URL('../public/favicon.ico', import.meta.url)));
+writeFileSync(output + '/config.js', "// Generated at build time. Public settings only.\nwindow.PICKLE_CONFIG = " + JSON.stringify(config, null, 2) + ";\n");
+writeFileSync(output + '/config.json', JSON.stringify({ supabase: { url, anonKey } }, null, 2));
 console.log("Public website configuration generated. Supabase: " + (url && anonKey ? "configured" : "not configured"));

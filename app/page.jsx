@@ -1,0 +1,12 @@
+import Link from 'next/link';
+import { ArrowDown, ArrowUpRight, Download, MessageCircle } from 'lucide-react';
+import { Header, Footer, discord } from '../components/Chrome.jsx';
+export default function Home() {
+  return <div className="pickle-home site-root"><Header /><main>
+    <section className="project-intro wrap"><p className="intro-season">Chapter 5 Season 1 <span>/</span> Underground</p><h1>Back to<br /><span>Underground.</span></h1><div className="intro-bottom"><p>A Fortnite revival for Chapter 5 Season 1.<br />Build 28.30. This is Project Pickle.</p><div className="intro-actions"><Link className="btn btn-primary" href="/download"><Download size={18} /> Get the launcher</Link><a className="btn btn-discord" href={discord} target="_blank" rel="noreferrer"><MessageCircle size={18} /> Join Discord</a><a className="text-link" href="#launcher">Explore the launcher <ArrowDown size={15} /></a></div></div></section>
+    <section className="launcher-preview wrap" aria-label="Launcher preview"><img src="/assets/launcher-preview.png" alt="Project Pickle launcher showing Home, Library and About" width="1180" height="780" fetchPriority="high" /></section>
+    <section className="build-edition wrap"><div className="edition-label">The build</div><div className="edition-main"><h2>Underground</h2><p>Chapter 5 Season 1</p></div><div className="edition-version"><strong>28.30</strong><span>CL-31511038</span></div></section>
+    <section className="launcher-details wrap" id="launcher"><div className="details-heading"><h2>Chapter 5.<br />Back underground.</h2><p>Underground, build 28.30. Keep your install in the Project Pickle library and your progress on your account.</p></div><dl className="details-list"><div><dt>Your build, ready in the library</dt><dd>Already have 28.30? Add your extracted folder. No need to download it twice.</dd></div><div><dt>Download Underground</dt><dd>Install directly inside the launcher. Pick a folder, follow the progress, and let it extract.</dd></div><div><dt>Your stats</dt><dd>Sign in to see matches, wins and eliminations reported to your account.</dd></div><div><dt>Bots included</dt><dd>The matchmaker supports bot-filled seats. Gameplay requires a compatible game-server deployment.</dd></div></dl></section>
+    <section className="home-contact wrap"><h2>Need something?</h2><Link href="/support">Talk to the CEO or community <ArrowUpRight size={17} /></Link></section>
+  </main><Footer /></div>;
+}

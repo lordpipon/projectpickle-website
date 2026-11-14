@@ -1,0 +1,6 @@
+node_modules/
+.next/
+.env*
+!.env.example
+public/assets/config.js
+public/assets/config.json
