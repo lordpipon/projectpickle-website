@@ -28,6 +28,8 @@ async function handle(request, context) {
     else if (/^admin\/players\/[a-f0-9-]+\/ban$/.test(path) && request.method === 'PATCH') result = await backend('/api/' + path, { token: (await identity(request)).token, method: 'PATCH', body });
     else if ((/^admin\/(shop|modes)$/.test(path) && request.method === 'PATCH') || (['admin/cups','admin/battlepass'].includes(path) && request.method === 'POST') || (/^admin\/players\/[a-f0-9-]+\/currency$/.test(path) && request.method === 'POST')) result = await backend('/api/' + path, { token: (await identity(request)).token, method: request.method, body });
     else if (path === 'battlepass' && ['GET','POST'].includes(request.method)) result = await backend('/api/battlepass', { token: (await identity(request)).token, method: request.method, ...(request.method === 'POST' ? { body } : {}) });
+    else if ((/^admin\/cups\/[a-f0-9-]+\/matches$/.test(path) || /^cups\/[a-f0-9-]+\/enter$/.test(path)) && request.method === 'POST') result = await backend('/api/' + path, { token: (await identity(request)).token, method:'POST',body });
+    else if (/^cups\/[a-f0-9-]+\/standings$/.test(path) && request.method === 'GET') result = await backend('/api/' + path);
     else if (['shop','game/settings'].includes(path) && request.method === 'GET') result = await backend('/api/' + path);
     else if (path === 'economy' && request.method === 'GET') result = await backend('/api/economy', { token: (await identity(request)).token });
     else if (path === 'shop/purchase' && request.method === 'POST') result = await backend('/api/shop/purchase', { token: (await identity(request)).token, method: 'POST', body });
